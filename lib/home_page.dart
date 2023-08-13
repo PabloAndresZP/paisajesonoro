@@ -1,31 +1,7 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 123, 90, 180),
-        ),
-        useMaterial3: true,
-      ),
-      home: const HomePage(title: 'Paisaje Sonoro'),
-    );
-  }
-}
-
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +13,7 @@ class HomePage extends StatelessWidget {
             // Lógica para abrir el menú hamburguesa
           },
         ),
-        title: Image.asset('assets/logo.png'), // Ruta a tu logo
+        title: Image.asset('assets/logo.png'), // Reemplaza con la ubicación de tu logo
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
@@ -50,25 +26,23 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           const Row(
-  children: [
-    Icon(Icons.attach_money, color: Colors.yellow), // Icono de diamante
-    Text('0'), // Cantidad de diamantes
-    Spacer(),
-    Icon(Icons.favorite, color: Colors.red),
-    Icon(Icons.favorite, color: Colors.red),
-    Icon(Icons.favorite, color: Colors.red),
-  ],
-),
+            children: [
+              Text('Diamantes: 0'),
+              Spacer(),
+              Icon(Icons.favorite),
+              Icon(Icons.favorite),
+              Icon(Icons.favorite),
+            ],
+          ),
           const Text('¿Qué quieres jugar?'),
           ElevatedButton(
             onPressed: () {
-              // Lógica para el botón Ritmo Pictórico
+              // Lógica para el botón Ritmo Pictorico
             },
-            child:  Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
+            child: const Row(
+              children: [
                 Icon(Icons.music_note),
-                Text('Ritmo Pictórico'),
+                Text('Ritmo Pictorico'),
               ],
             ),
           ),
@@ -76,27 +50,19 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               // Lógica para el botón Pintando Sonido
             },
-            child:  Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
+            child: const Row(
+              children: [
                 Icon(Icons.brush),
                 Text('Pintando Sonido'),
               ],
             ),
           ),
           ElevatedButton(
-  onPressed: () {
-    // Lógica para el botón Lienzo Sonoro
-  },
-  child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Icon(Icons.brush), // Icono que desees
-      SizedBox(height: 8), // Espacio entre el icono y el texto
-      Text('Lienzo Sonoro'),
-    ],
-  ),
-),
+            onPressed: () {
+              // Lógica para el botón Lienzo Sonoro
+            },
+            child: const Text('Lienzo Sonoro'),
+          ),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
