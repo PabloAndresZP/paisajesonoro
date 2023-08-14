@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 123, 90, 180),
@@ -49,54 +50,70 @@ class HomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const Row(
-  children: [
-    Icon(Icons.attach_money, color: Colors.yellow), // Icono de diamante
-    Text('0'), // Cantidad de diamantes
-    Spacer(),
-    Icon(Icons.favorite, color: Colors.red),
-    Icon(Icons.favorite, color: Colors.red),
-    Icon(Icons.favorite, color: Colors.red),
-  ],
+          Row(
+            children: [
+              Icon(Icons.attach_money, color: Colors.yellow), // Icono de diamante
+              Text('0'), // Cantidad de diamantes
+              Spacer(),
+              Icon(Icons.favorite, color: Colors.red),
+              Icon(Icons.favorite, color: Colors.red),
+              Icon(Icons.favorite, color: Colors.red),
+            ],
+          ),
+          Text(
+  '¿Qué quieres jugar?',
+  style: TextStyle(
+    fontFamily: 'Aldrich',
+    fontSize: 21,
+  ),
 ),
-          const Text('¿Qué quieres jugar?'),
+          const SizedBox(height: 16), // Espacio entre elementos
           ElevatedButton(
             onPressed: () {
               // Lógica para el botón Ritmo Pictórico
             },
-            child:  Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-                Icon(Icons.music_note),
-                Text('Ritmo Pictórico'),
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(218, 200), // Tamaño del botón (ancho, alto)
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(3), // Radio de las esquinas
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.music_note, size: 48), // Tamaño del icono
+                SizedBox(height: 8), // Espacio entre el icono y el texto
+                Text('Ritmo Pictórico', style: TextStyle(fontSize: 18)), // Tamaño del texto
               ],
             ),
           ),
+          const SizedBox(height: 16), // Espacio entre elementos
           ElevatedButton(
             onPressed: () {
               // Lógica para el botón Pintando Sonido
             },
-            child:  Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 Icon(Icons.brush),
                 Text('Pintando Sonido'),
               ],
             ),
           ),
+          const SizedBox(height: 16), // Espacio entre elementos
           ElevatedButton(
-  onPressed: () {
-    // Lógica para el botón Lienzo Sonoro
-  },
-  child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Icon(Icons.brush), // Icono que desees
-      SizedBox(height: 8), // Espacio entre el icono y el texto
-      Text('Lienzo Sonoro'),
-    ],
-  ),
-),
+            onPressed: () {
+              // Lógica para el botón Lienzo Sonoro
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.brush), // Icono que desees
+                SizedBox(height: 8), // Espacio entre el icono y el texto
+                Text('Lienzo Sonoro'),
+              ],
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
