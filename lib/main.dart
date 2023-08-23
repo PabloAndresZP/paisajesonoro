@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'src/pages/instructions_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -48,6 +50,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      
       body: Column(
         children: [
           Row(
@@ -69,24 +72,27 @@ class HomePage extends StatelessWidget {
 ),
           const SizedBox(height: 16), // Espacio entre elementos
           ElevatedButton(
-            onPressed: () {
-              // Lógica para el botón Ritmo Pictórico
-            },
-            style: ElevatedButton.styleFrom(
-              minimumSize: Size(218, 200), // Tamaño del botón (ancho, alto)
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(3), // Radio de las esquinas
-              ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.music_note, size: 48), // Tamaño del icono
-                SizedBox(height: 8), // Espacio entre el icono y el texto
-                Text('Ritmo Pictórico', style: TextStyle(fontSize: 18)), // Tamaño del texto
-              ],
-            ),
-          ),
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => InstructionsPage()), // Cambia aquí
+    );
+  },
+  style: ElevatedButton.styleFrom(
+    minimumSize: Size(218, 200),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(3),
+    ),
+  ),
+  child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Icon(Icons.music_note, size: 48),
+      SizedBox(height: 8),
+      Text('Ritmo Pictórico', style: TextStyle(fontSize: 18)),
+    ],
+  ),
+),
           const SizedBox(height: 16), // Espacio entre elementos
           ElevatedButton(
             onPressed: () {
