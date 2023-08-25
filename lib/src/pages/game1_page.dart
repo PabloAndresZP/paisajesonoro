@@ -112,14 +112,17 @@ class ExerciseGrid extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         for (int i = 0; i < 4; i++)
-          Container(
-            width: 50,
-            height: 50,
-            color: exerciseGrid[i] == '' ? Colors.grey : Colors.green,
-            child: Center(
-              child: Text(
-                exerciseGrid[i] != '' ? exerciseGrid[i] : (i + 1).toString(),
-                style: TextStyle(fontSize: 18, color: Colors.white),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(25), // Bordes redondos
+            child: Container(
+              width: 50,
+              height: 50,
+              color: exerciseGrid[i] == '' ? Colors.grey : Colors.green,
+              child: Center(
+                child: Text(
+                  exerciseGrid[i] != '' ? exerciseGrid[i] : (i + 1).toString(),
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
               ),
             ),
           ),
