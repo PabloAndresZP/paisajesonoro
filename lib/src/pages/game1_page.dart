@@ -64,7 +64,7 @@ class _Game1PageState extends State<Game1Page> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Game 1'),
+        title: Text('Ritmo Pictórico'),
       ),
       body: Column(
         children: [

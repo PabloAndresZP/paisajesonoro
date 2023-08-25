@@ -1,0 +1,111 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:audioplayers/audioplayers.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Acentos y silencios',
+      debugShowCheckedModeBanner: false,
+      home: const SoundGame(),
+    );
+  }
+}
+
+class SoundGame extends StatefulWidget {
+  const SoundGame({Key? key}) : super(key: key);
+
+  @override
+  _SoundGameState createState() => _SoundGameState();
+}
+
+class _SoundGameState extends State<SoundGame> {
+  AudioPlayer audioPlayer = AudioPlayer();
+  int currentSoundIndex = 0;
+
+  List<String> soundPaths = ['silencio.mp3', 'acento.mp3', 'silencio.mp3', 'acento.mp3'];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Juego de Sonidos'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Conteo del 1 al 4
+            for (int i = 1; i <= 4; i++)
+              Text(
+                '$i',
+                style: TextStyle(fontSize: 24),
+              ),
+            const SizedBox(height: 20),
+            // Casillas numeradas con acento o silencio
+            for (int i = 0; i < 4; i++)
+              ElevatedButton(
+                onPressed: () {
+                  _playSound(soundPaths[i]);
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(80, 80),
+                  shape: CircleBorder(),
+                  primary: Colors.blueGrey,
+                ),
+                child: Text(
+                  (i + 1).toString(),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                ),
+              ),
+            const SizedBox(height: 20),
+            // Botón de reproducción del ejercicio
+            ElevatedButton(
+              onPressed: () {
+                _playExercise();
+              },
+              child: const Text('Reproducir Ejercicio'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _playSound(String soundPath) async {
+    ByteData data = await rootBundle.load('assets/sounds/$soundPath');
+    List<int> bytes = data.buffer.asUint8List();
+
+    int result = await audioPlayer.playBytes(bytes);
+    if (result == 1) {
+      print('Audio playing');
+    } else {
+      print('Error playing audio');
+    }
+  }
+
+  Future<void> _playExercise() async {
+    for (int i = 1; i <= 4; i++) {
+      // Conteo del 1 al 4 antes de cada sonido
+      await _playSound('conteo$i.mp3');
+      // Reproducir el sonido de la casilla
+      await _playSound(soundPaths[i - 1]);
+    }
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.dispose();
+    super.dispose();
+  }
+}

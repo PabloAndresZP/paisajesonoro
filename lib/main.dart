@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'src/pages/instructions_page.dart';
 
 void main() {
@@ -10,7 +9,6 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
@@ -20,6 +18,10 @@ class MyApp extends StatelessWidget {
           seedColor: const Color.fromARGB(255, 123, 90, 180),
         ),
         useMaterial3: true,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.orange, // Cambiar el color de la barra superior
+        ),
+        scaffoldBackgroundColor: Colors.orange, // Cambiar el color de fondo de la página
       ),
       home: const HomePage(title: 'Paisaje Sonoro'),
     );
@@ -56,8 +58,8 @@ class HomePage extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(Icons.attach_money, color: Colors.yellow), // Icono de diamante
-                Text('0'), // Cantidad de diamantes
+                Icon(Icons.attach_money, color: Colors.yellow),
+                Text('0'),
                 Spacer(),
                 Icon(Icons.favorite, color: Colors.red),
                 Icon(Icons.favorite, color: Colors.red),
@@ -67,92 +69,93 @@ class HomePage extends StatelessWidget {
             Text(
               '¿Qué quieres jugar?',
               style: TextStyle(
-                fontFamily: 'Aldrich',
+                fontFamily: 'WorkSans',
+                fontWeight: FontWeight.bold,
                 fontSize: 21,
               ),
             ),
-            const SizedBox(height: 16), // Espacio entre elementos
-           ElevatedButton(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => InstructionsPage()), // Cambia aquí si es la página correcta
-    );
-  },
-  style: ElevatedButton.styleFrom(
-    minimumSize: Size(216, 216),
-    shape: CircleBorder(),
-    primary: Color.fromRGBO(170, 212, 226, 1),
-  ),
-  child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Icon(Icons.brush),
-      Text(
-        'Ritmo Pictórico',
-        style: TextStyle(
-          color: Colors.white,
-          fontFamily: 'WorkSans', // Nombre de la fuente definido en pubspec.yaml
-          fontWeight: FontWeight.bold, // Fuente en negrita
-          fontSize: 17, // Tamaño de fuente 17px
-        ),
-      ),
-    ],
-  ),
-),
-            const SizedBox(height: 16), // Espacio entre elementos
+            const SizedBox(height: 16),
             ElevatedButton(
-  onPressed: () {
-    // Lógica para el botón Pintando Sonido
-  },
-  style: ElevatedButton.styleFrom(
-    minimumSize: Size(216, 216),
-    shape: CircleBorder(),
-    primary: Color.fromRGBO(170, 212, 226, 1),
-  ),
-  child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Icon(Icons.brush),
-      Text(
-        'Pintando Sonido',
-        style: TextStyle(
-          color: Colors.white,
-          fontFamily: 'WorkSans', // Nombre de la fuente definido en pubspec.yaml
-          fontWeight: FontWeight.bold, // Fuente en negrita
-          fontSize: 17, // Tamaño de fuente 17px
-        ),
-      ),
-    ],
-  ),
-),
-            const SizedBox(height: 16), // Espacio entre elementos
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => InstructionsPage()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(216, 216),
+                shape: CircleBorder(),
+                primary: Color.fromRGBO(170, 212, 226, 1),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.brush),
+                  Text(
+                    'Ritmo Pictórico',
+                    style: TextStyle(
+                      color: Colors.white, // Cambiar el color del texto a blanco
+                      fontFamily: 'WorkSans',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
             ElevatedButton(
-  onPressed: () {
-    // Lógica para el botón Pintando Sonido
-  },
-  style: ElevatedButton.styleFrom(
-    minimumSize: Size(216, 216),
-    shape: CircleBorder(),
-    primary: Color.fromRGBO(170, 212, 226, 1),
-  ),
-  child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Icon(Icons.brush),
-      Text(
-        'Lienzo Sonoro',
-        style: TextStyle(
-          color: Colors.white,
-          fontFamily: 'WorkSans', // Nombre de la fuente definido en pubspec.yaml
-          fontWeight: FontWeight.bold, // Fuente en negrita
-          fontSize: 17, // Tamaño de fuente 17px
-        ),
-      ),
-    ],
-  ),
-),
-            const SizedBox(height: 16), // Espacio entre elementos
+              onPressed: () {
+                // Lógica para el botón Pintando Sonido
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(216, 216),
+                shape: CircleBorder(),
+                primary: Color.fromRGBO(170, 212, 226, 1),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.brush),
+                  Text(
+                    'Pintando Sonido',
+                    style: TextStyle(
+                      color: Colors.white, // Cambiar el color del texto a blanco
+                      fontFamily: 'WorkSans',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                // Lógica para el botón Pintando Sonido
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(216, 216),
+                shape: CircleBorder(),
+                primary: Color.fromRGBO(170, 212, 226, 1),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.brush),
+                  Text(
+                    'Lienzo Sonoro',
+                    style: TextStyle(
+                      color: Colors.white, // Cambiar el color del texto a blanco
+                      fontFamily: 'WorkSans',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
           ],
         ),
       ),
